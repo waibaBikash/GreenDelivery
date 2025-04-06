@@ -16,10 +16,9 @@ const ProductsCart = ({product}) => {
               <p>{product.category}</p>
               <p className="text-gray-700 font-medium text-lg truncate w-full">{product.name}</p>
               <div className="flex items-center gap-0.5">
-                  {Array(5).fill('').map((_, i) => (
-                      
+                  {Array(5).fill('').map((_, i) => (   
                   <img key={i} className="md:w-3.5 w-3"
-                   src={i<4 ? assets.star_icon : assets.star_dull_icon} alt=""/>
+                   src={i < 4 ? assets.star_icon : assets.star_dull_icon} alt=""/>
                   ))}
                   <p>(4)</p>
               </div>
