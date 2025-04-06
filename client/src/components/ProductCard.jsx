@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
 
-const ProductsCart = ({product}) => {
+const ProductCard = ({product}) => {
   const [count, setCount] = React.useState(0);
   const {currency, addToCart, removeFromCart, cartTtems, navigate} = useAppContext()
 
@@ -51,4 +51,4 @@ const ProductsCart = ({product}) => {
 };
 
 
-export default ProductsCart;
+export default ProductCard;
