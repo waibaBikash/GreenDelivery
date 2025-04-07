@@ -41,7 +41,7 @@ const ProductCard = ({product}) => {
                               <button onClick={() => {removeFromCart(product._id)}} className="cursor-pointer text-md px-2 h-full" >
                                   -
                               </button>
-                              <span className="w-5 text-center">{cartTtems[product._id]}</span>
+                              <span className="w-5 text-center">{cartItems[product._id]}</span>
                               <button onClick={() => {addToCart(product._id)}} className="cursor-pointer text-md px-2 h-full" >
                                   +
                               </button>
