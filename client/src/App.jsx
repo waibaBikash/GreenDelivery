@@ -28,7 +28,7 @@ const App = () => {
            <Route path='/' element = {<Home/>}/>
            <Route path='/products' element = {<AllProducts/>}/>
            <Route path='/products/:category' element = {<ProductCategory/>}/>
-           <Route path='/products/:category/:id' element = {<ProductDetails/>}/>
+           <Route path='/porducts/:category/:id' element = {<ProductDetails/>}/>
          </Routes>
        </div>
        {!isSellerPath && <Footer/>}
