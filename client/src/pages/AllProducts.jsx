@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard'
 
 const AllProducts = () => {
 
-  const {products, searchQuery, setSearchQuery} = useAppContext()
+  const {products, searchQuery} = useAppContext()
   const [filteredProducts, setFilteredProducts] = useState([])
 
   useEffect(()=>{
