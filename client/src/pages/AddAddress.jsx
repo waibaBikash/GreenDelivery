@@ -4,7 +4,7 @@ import { assets } from '../assets/assets'
 
 // Input Field Comments
 const InputField = ({type, placeholder, name, handleChange, address} )=>(
-  <input className='w-full px-2 py-2.5 border bg-gray-500/30 rounded outline-none text-gray-500 focus:border-primary transition'
+  <input className='w-full px-2 py-2.5 border border-gray-500/30 rounded outline-none text-gray-500 focus:border-primary transition'
    type={type}
   placeholder={placeholder}
   onChange={handleChange}
@@ -30,7 +30,7 @@ const AddAddress = () => {
     const { name, value} = e.target;
 
     setAddress((prevAddress)=>({
-       ...AddAddress,
+       ...prevAddress,
        [name]: value,
     }))
   }
