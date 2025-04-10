@@ -4,7 +4,7 @@ import { assets, dummyAddress } from "../assets/assets";
 
 const Cart = () => {
 
-  const { products, currency, cartItems, removeFromCart, getCartCount, updatedCartItem, navigate, getCartItem, getCartAmount} = useAppContext()
+  const { products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, navigate, getCartAmount} = useAppContext()
   const [cartArray, setCartArray] = useState([])
   const [addresses, setAddresses] = useState([dummyAddress])
   const [showAddress, setShowAddress] = useState(false)
@@ -35,7 +35,7 @@ const Cart = () => {
       <div className="flex flex-col md:flex-row mt-6">
           <div className='flex-1 max-w-4xl'>
               <h1 className="text-3xl font-medium mb-6">
-                  Shopping Cart <span className="text-sm text-primary">{getCartCount}</span>
+                  Shopping Cart <span className="text-sm text-primary">{getCartCount()}</span>
               </h1>
 
               <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
@@ -48,7 +48,7 @@ const Cart = () => {
                   <div key={index} className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3">
                       <div className="flex items-center md:gap-6 gap-3">
                           <div onClick={()=>{
-                            navigate(`/products/${product.category.toLowerCase()}/${product._id}`); scrollTo(0.0)
+                            navigate(`/products/${product.category.toLowerCase()}/${product._id}`); scrollTo(0,0)
                           }} className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
                               <img className="max-w-full h-full object-cover" src={product.image[0]} alt={product.name} />
                           </div>
@@ -59,7 +59,7 @@ const Cart = () => {
                                     Weight: <span>{product.weight || "N/A"}</span></p>
                                   <div className='flex items-center'>
                                       <p>Qty:</p>
-                                      <select className='outline-none'>
+                                      <select onChange={e => updateCartItem (product._id, Number(e.target.value))} value={cartItems[product._id]} className='outline-none'>
                                           {Array(cartItems[product._id] > 9 ? cartItems[product._id] : 9).fill('').map((_, index) => (
                                               <option key={index} value={index + 1}>{index + 1}</option>
                                           ))}
@@ -69,7 +69,7 @@ const Cart = () => {
                           </div>
                       </div>
                       <p className="text-center">{currency}{product.offerPrice * product.quantity}</p>
-                      <button onClick={()=> removeFromCart()} className="cursor-pointer mx-auto">
+                      <button onClick={()=> removeFromCart(product._id)} className="cursor-pointer mx-auto">
                           <img  src={assets.remove_icon} alt="remove"  className="inline-block w-6 h-6"/>
                       </button>
                   </div>)
@@ -103,7 +103,7 @@ const Cart = () => {
                            </p>
                             )) 
                               }
-                              <p onClick={() => navigate("/add-address")} className="text-primary text-center cursor-pointer p-2 hover:bg-primary-dull">
+                              <p onClick={() => navigate("/add-address")} className="text-primary text-center cursor-pointer p-2 hover:bg-primary/10">
                                   Add address
                               </p>
                           </div>
@@ -112,7 +112,7 @@ const Cart = () => {
 
                   <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
 
-                  <select onChange={(e)=> setPaymentOption(e.target.value)} className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
+                  <select onChange={e => setPaymentOption(e.target.value)} className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
                       <option value="COD">Cash On Delivery</option>
                       <option value="Online">Online Payment</option>
                   </select>
