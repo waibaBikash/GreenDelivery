@@ -1,6 +1,7 @@
+
 import jwt from "jsonwebtoken";
 
-const authUser = (req, res, next) => {
+const authUser = async (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
     return res.json({
@@ -9,21 +10,21 @@ const authUser = (req, res, next) => {
     });
   }
   try {
-    const tokenDeconded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!tokenDeconded) {
-        req.body.userId = tokenDeconded.id;
+    const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
+    if (tokenDecode.id) {
+        req.body.userId = tokenDecode.id;
       }else {
         return res.json({
           success: false,
           message: "No Authorized"
         });
       }
-    next();
+    next();   // execute the controllr fun
 
   } catch (error) {
     res.json({
       success: false,
-      message: "No Authorized"
+      message: error.message
     });
   }
 }
