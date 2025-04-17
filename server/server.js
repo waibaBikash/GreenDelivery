@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './configs/db.js';
 import 'dotenv/config';
 import userRouter from './routes/userRoute.js';
+import sellerRouter from './routes/sellerRoute.js';
 
 
 
@@ -23,8 +24,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: allowdOrigins, Credential: true}));
 
-app.get('/', (req, res) => res.send('Api is Working!'));
+app.get('/', (req, res) => res.send('API is Working!'));
 app.use('/api/user', userRouter)
+app.use('/api/seller', sellerRouter)
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost: ${port}`);
