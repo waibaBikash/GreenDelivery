@@ -20,3 +20,23 @@ export const addAddress = async (req, res) => {
     });
   }
 }
+
+
+// Get Address: /api/address/get
+export const getAddress = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const addressess = await Address.find({userId});
+    res.json({
+      success: true,
+      addressess
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.json({
+      success: false,
+      message: error.message
+    });
+  }
+}
+
