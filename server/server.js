@@ -17,8 +17,10 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 
-await connectDB();
-await connectCloudinary();
+(async () => {
+  await connectDB();
+  connectCloudinary();
+})();
 
 // Allow multiple origins
 const allowdOrigins = [
