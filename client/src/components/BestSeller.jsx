@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import ProductCard from './ProductCard';
-import { useAppContext } from '../context/AppContext'
+import { useAppContext } from '../context/AppContext';
 
 
 const BestSeller = () => {
@@ -19,4 +19,4 @@ const BestSeller = () => {
   )
 }
 
-export default BestSeller
+export default BestSeller;
