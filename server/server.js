@@ -19,7 +19,8 @@ const port = process.env.PORT || 4000;
 
 // Connect to MongoDB and Cloudinary
   await connectDB();
-  connectCloudinary();
+  await connectCloudinary();
+  
 
 
 // Allow multiple origins
