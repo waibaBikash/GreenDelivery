@@ -55,15 +55,15 @@ export const register = async (req, res) => {
         return res.json({ success: false, message: "Invalid credentials" });
       }
   
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-      if (!isPasswordValid) {
-        return res.json({ success: false, message: "Invalid credentials" });
-      }
+      // const isPasswordValid = await bcrypt.compare(password, user.password);
+      // if (!isPasswordValid) {
+      //   return res.json({ success: false, message: "Invalid credentials" });
+      // }
   
       const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
+      if (!isMatch) 
         return res.json({ success: false, message: "Invalid credentials" });
-      }
+      
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "7d",
       });
@@ -80,7 +80,7 @@ export const register = async (req, res) => {
         user: { email: user.email, name: user.name },
       });
     } catch (error) {
-      console.error(error);
+      console.log(error.message);
        res.json({ success: false, message: error.message });
     }
   }

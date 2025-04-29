@@ -6,7 +6,7 @@ const authUser = async (req, res, next) => {
   if (!token) {
     return res.json({
       success: false,
-      message: "No Authorized"
+      message: "Not Authorized"
     });
   }
   try {
@@ -16,7 +16,7 @@ const authUser = async (req, res, next) => {
       }else {
         return res.json({
           success: false,
-          message: "No Authorized"
+          message: "Not Authorized"
         });
       }
     next();   // execute the controllr fun
