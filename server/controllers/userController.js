@@ -24,7 +24,7 @@ export const register = async (req, res) => {
       password: hashedPassword,
     });
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "7d"
     });
     res.cookie("token", token, {
       httpOnly: true,  // prevent javascript to access the cookie
@@ -36,7 +36,7 @@ export const register = async (req, res) => {
     return res.json({success: true, user: {email: user.email, name: user.name}});
     
   } catch (error) {
-    console.error(error);
+    console.log(error.message);
      res.json({ success: false, message: error.message });
   }
 }

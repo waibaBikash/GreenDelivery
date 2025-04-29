@@ -17,10 +17,10 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 
-(async () => {
+// Connect to MongoDB and Cloudinary
   await connectDB();
   connectCloudinary();
-})();
+
 
 // Allow multiple origins
 const allowdOrigins = [
