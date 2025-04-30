@@ -31,7 +31,7 @@ const allowdOrigins = [
 // Midldleware configuration
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: allowdOrigins, Credential: true}));
+app.use(cors({origin: allowdOrigins, credentials: true}));
 
 app.get('/', (req, res) => res.send('API is Working!'));
 app.use('/api/user', userRouter)
@@ -42,5 +42,5 @@ app.use('/api/address', addressRouter)
 app.use('/api/order', orderRouter)
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost: ${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
