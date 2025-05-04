@@ -50,6 +50,8 @@ export const AppContextProvider = ({children}) => {
       setIsSeller(false);
     }
   }
+  // Logout User
+  
 
 
 // Fetch All Products
